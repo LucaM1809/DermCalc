@@ -7,13 +7,115 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:background="@color/primary_blue"
+        android:padding = "16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DermCalc"
+            android:textColor = "@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nuova Visita"
+            android:textColor="@color/light_blue"
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+    
+    <!-- schermata centrale scorrevole -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp"
+        android:clipToPadding="false">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation = "vertical"
+            android:layout_marginBottom="12dp">
+            
+            <!-- generalità paziente -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id = "@+id/cardPaziente"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card"
+                android:padding="16dp"
+                android:layout_marginBottom = "12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "Paziente"
+                    android:textSize="11sp"
+                    android:textColor="@color/text_secondary"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id = "@+id/Nome"
+                    android:hint = "Nome e Cognome"
+                    android:inputType="textPersonName"
+                    android:background="@drawable/bg_input"
+                    android:padding = "12dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id = "@+id/DDN"
+                    android:hint = "Data di Nascita"
+                    android:background="@drawable/bg_input"
+                    android:padding = "12dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"
+                    android:focusable = "false"
+                    android:clickable="true"/>
+
+                <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id = "@+id/CodFis"
+                android:hint = "Codice Fiscale"
+                android:inputType="textCapCharacters"
+                    android:maxLength="16"
+                android:background="@drawable/bg_input"
+                android:padding = "12dp"
+                android:textSize="14sp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"/>
+
+            </LinearLayout>
+
+            <!-- pulsante salva -->
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/SalvaPaziente"
+                android:text="Salva e inizia visita"
+                android:backgroundTint="@color/primary_blue"
+                android:textColor="@color/white"
+                android:padding="14dp"/>
+
+            <!--  -->
+            
+        </LinearLayout>
+        
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
