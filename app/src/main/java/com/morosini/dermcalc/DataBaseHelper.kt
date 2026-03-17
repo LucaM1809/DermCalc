@@ -83,4 +83,60 @@ class DataBaseHelper(context: Context): SQLiteOpenHelper(context, "dermcalc.db",
         }
         return db.insert("visite", null, values)
     }
+    // crea visita vuota e restituisce l'id
+    fun creaVisita(pazienteId: Int, dataVisita: String): Long {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("paziente_id", pazienteId)
+            put("data_visita", dataVisita)
+        }
+        return db.insert("Visite", null, values)
+    }
+
+    // aggiorna singoli indici
+    fun aggiornaBmi(visitaId: Int, bmi: Double) {
+        val db = writableDatabase
+        val values = ContentValues().apply { put("bmi", bmi) }
+        db.update("Visite", values, "id = ?", arrayOf(visitaId.toString()))
+    }
+
+    fun aggiornaPasi(visitaId: Int, pasi: Double) {
+        val db = writableDatabase
+        val values = ContentValues().apply { put("pasi", pasi) }
+        db.update("Visite", values, "id = ?", arrayOf(visitaId.toString()))
+    }
+
+    fun aggiornaEasi(visitaId: Int, easi: Double) {
+        val db = writableDatabase
+        val values = ContentValues().apply { put("easi", easi) }
+        db.update("Visite", values, "id = ?", arrayOf(visitaId.toString()))
+    }
+
+    fun aggiornaBsa(visitaId: Int, bsa: Double) {
+        val db = writableDatabase
+        val values = ContentValues().apply { put("bsa", bsa) }
+        db.update("Visite", values, "id = ?", arrayOf(visitaId.toString()))
+    }
+
+    // get visite di un paziente ordinate per data
+    fun getVisitePaziente(pazienteId: Int): List<Map<String, Any?>> {
+        val lista = mutableListOf<Map<String, Any?>>()
+        val db = readableDatabase
+        val cursor = db.rawQuery(
+            "SELECT * FROM Visite WHERE paziente_id = ? ORDER BY data_visita ASC",
+            arrayOf(pazienteId.toString())
+        )
+        while (cursor.moveToNext()) {
+            lista.add(mapOf(
+                "id" to cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+                "data_visita" to cursor.getString(cursor.getColumnIndexOrThrow("data_visita")),
+                "pasi" to if (cursor.isNull(cursor.getColumnIndexOrThrow("pasi"))) null else cursor.getDouble(cursor.getColumnIndexOrThrow("pasi")),
+                "easi" to if (cursor.isNull(cursor.getColumnIndexOrThrow("easi"))) null else cursor.getDouble(cursor.getColumnIndexOrThrow("easi")),
+                "bmi" to if (cursor.isNull(cursor.getColumnIndexOrThrow("bmi"))) null else cursor.getDouble(cursor.getColumnIndexOrThrow("bmi")),
+                "bsa" to if (cursor.isNull(cursor.getColumnIndexOrThrow("bsa"))) null else cursor.getDouble(cursor.getColumnIndexOrThrow("bsa"))
+            ))
+        }
+        cursor.close()
+        return lista
+    }
 }

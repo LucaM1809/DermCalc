@@ -8,6 +8,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import java.util.Calendar
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,8 +48,8 @@ class MainActivity : AppCompatActivity() {
         btnNavVisita = findViewById(R.id.btnNavVisita)
         btnNavPazienti = findViewById(R.id.btnNavPazienti)
 
-        // i bottoni indici e report sono disabilitati finché non si salva il paziente
-        abilitaBottoni(false)
+//        // i bottoni indici e report sono disabilitati finché non si salva il paziente
+//        abilitaBottoni(false)
 
         // click sulla data — apre DatePickerDialog
         DDN.setOnClickListener {
@@ -74,7 +77,13 @@ class MainActivity : AppCompatActivity() {
 
             val id = db.inserisciPaziente(nome, dataNascita, codiceFiscale)
             if (id != -1L) {
-                pazienteId = id.toInt()
+                App.pazienteId = id.toInt()
+                App.nomePaziente = nome
+                App.dataNascita = dataNascita
+                App.codiceFiscale = codiceFiscale
+                App.dataVisita = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+                App.visitaId = db.creaVisita(App.pazienteId, App.dataVisita).toInt()
+                App.salva(this)
                 abilitaBottoni(true)
                 Toast.makeText(this, "Paziente salvato!", Toast.LENGTH_SHORT).show()
             } else {
@@ -84,56 +93,46 @@ class MainActivity : AppCompatActivity() {
 
         // bottoni indici
         btnPasi.setOnClickListener {
-            if (pazienteId == -1) return@setOnClickListener
             val intent = Intent(this, PasiActivity::class.java)
-            intent.putExtra("paziente_id", pazienteId)
-            intent.putExtra("nome:paziente", Nome.text.toString())
-            intent.putExtra("data_visita", java.text.SimpleDateFormat("dd/MM/yyyy", java.util.Locale.getDefault()).format(java.util.Date()))
             startActivity(intent)
         }
 
         btnEasi.setOnClickListener {
-            if (pazienteId == -1) return@setOnClickListener
             val intent = Intent(this, EasiActivity::class.java)
-            intent.putExtra("paziente_id", pazienteId)
-            intent.putExtra("nome:paziente", Nome.text.toString())
-            intent.putExtra("data_visita", java.text.SimpleDateFormat("dd/MM/yyyy", java.util.Locale.getDefault()).format(java.util.Date()))
             startActivity(intent)
         }
 
         btnBmi.setOnClickListener {
-            if (pazienteId == -1) return@setOnClickListener
             val intent = Intent(this, BmiActivity::class.java)
-            intent.putExtra("paziente_id", pazienteId)
-            intent.putExtra("nome:paziente", Nome.text.toString())
-            intent.putExtra("data_visita", java.text.SimpleDateFormat("dd/MM/yyyy", java.util.Locale.getDefault()).format(java.util.Date()))
             startActivity(intent)
         }
 
         btnBsa.setOnClickListener {
-            if (pazienteId == -1) return@setOnClickListener
             val intent = Intent(this, BsaActivity::class.java)
-            intent.putExtra("paziente_id", pazienteId)
-            intent.putExtra("nome:paziente", Nome.text.toString())
-            intent.putExtra("data_visita", java.text.SimpleDateFormat("dd/MM/yyyy", java.util.Locale.getDefault()).format(java.util.Date()))
             startActivity(intent)
         }
 
-        // report
         btnReport.setOnClickListener {
-            if (pazienteId == -1) {
-                Toast.makeText(this, "Salva prima un paziente", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
             val intent = Intent(this, ReportActivity::class.java)
-            intent.putExtra("paziente_id", pazienteId)
             startActivity(intent)
         }
 
-        // navbar
         btnNavPazienti.setOnClickListener {
             val intent = Intent(this, PatientActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        App.carica(this)
+        if (App.pazienteId != -1) {
+            Nome.setText(App.nomePaziente)
+            DDN.setText(App.dataNascita)
+            CodFis.setText(App.codiceFiscale)
+            abilitaBottoni(true)
+        } else {
+            abilitaBottoni(false)
         }
     }
 
