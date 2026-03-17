@@ -114,63 +114,69 @@
 
             <!-- button calcolo indici -->
             <GridLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_height="match_parent"
                 android:columnCount="2"
-                android:rowCount="2">
+                android:rowCount="2"
+                android:padding="16dp"
+                android:background="@color/background_grey">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnPasi"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120dp"
                     android:layout_columnWeight="1"
-
-                    android:background="@drawable/bg_card"
-                    android:padding="16dp"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="8dp"
                     android:text="PASI\nPsoriasi"
+                    android:textColor="#0C447C"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/btn_pasi"
+                    android:stateListAnimator="@null" />
 
-                    android:textColor="@color/text_primary"
-                    android:textSize="13sp" />
-
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnEasi"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120dp"
                     android:layout_columnWeight="1"
-
-                    android:background="@drawable/bg_card"
-                    android:padding="16dp"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="8dp"
                     android:text="EASI\nDermatite Atopica"
+                    android:textColor="#27500A"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/btn_easi"
+                    android:stateListAnimator="@null" />
 
-                    android:textColor="@color/text_primary"
-                    android:textSize="13sp" />
-
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnBmi"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120dp"
                     android:layout_columnWeight="1"
-
-                    android:background="@drawable/bg_card"
-                    android:padding="16dp"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="8dp"
                     android:text="BMI\nBody Mass Index"
+                    android:textColor="#633806"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/btn_bmi"
+                    android:stateListAnimator="@null" />
 
-                    android:textColor="@color/text_primary"
-                    android:textSize="13sp" />
-
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnBsa"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120dp"
                     android:layout_columnWeight="1"
-
-                    android:background="@drawable/bg_card"
-                    android:padding="16dp"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="8dp"
                     android:text="BSA\nBody Surface Area"
-
-                    android:textColor="@color/text_primary"
-                    android:textSize="13sp" />
+                    android:textColor="#72243E"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/btn_bsa"
+                    android:stateListAnimator="@null" />
 
             </GridLayout>
 

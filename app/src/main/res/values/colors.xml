@@ -9,8 +9,7 @@
     <color name="border_light">#14000000</color>
     <color name="text_primary">#222222</color>
     <color name="text_secondary">#888888</color>
-    <color name="icon_blue_bg">#E6F1FB</color>
-    <color name="icon_green_bg">#E1F5EE</color>
-    <color name="icon_amber_bg">#FAEEDA</color>
-    <color name="icon_pink_bg">#FBEAF0</color>
+    <color name="primary_easi">#639922</color>
+    <color name="primary_bmi">#EF9F27</color>
+    <color name="primary_bsa">#D4537E</color>
 </resources>
