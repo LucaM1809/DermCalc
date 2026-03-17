@@ -5,20 +5,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import android.widget.TextView
 
-class BmiActivity : AppCompatActivity() {
+class activity_easi_result : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_bmi)
-
-        val nomePaziente = intent.getStringExtra("nome_paziente") ?: ""
-        val dataVisita = intent.getStringExtra("data_visita") ?: ""
-
-        findViewById<TextView>(R.id.tvNomePaziente).text = nomePaziente
-        findViewById<TextView>(R.id.tvDataVisita).text = dataVisita
-
+        setContentView(R.layout.activity_easi_result)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

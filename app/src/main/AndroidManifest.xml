@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DermCalc">
         <activity
+            android:name=".activity_easi_result"
+            android:exported="false" />
+        <activity
+            android:name=".activity_pasi_result"
+            android:exported="false" />
+        <activity
+            android:name=".activity_bsa_result"
+            android:exported="false" />
+        <activity
+            android:name=".activity_bmi_result"
+            android:exported="false" />
+        <activity
             android:name=".PatientActivity"
             android:exported="false" />
         <activity
