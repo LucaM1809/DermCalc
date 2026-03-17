@@ -12,6 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DermCalc">
         <activity
+            android:name=".PatientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BsaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BmiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PasiActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
