@@ -63,6 +63,24 @@ class DataBaseHelper(context: Context): SQLiteOpenHelper(context, "dermcalc.db",
         return lista
     }
 
+    //trova pazienti già loggati
+    fun getPazienteByCF(codiceFiscale: String): Triple<Int, String, String>? {
+        val db = readableDatabase
+        val cursor = db.rawQuery(
+            "SELECT id, nome, data_nascita FROM Pazienti WHERE codice_fiscale = ?",
+            arrayOf(codiceFiscale)
+        )
+        return if (cursor.moveToFirst()) {
+            Triple(
+                cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2)
+            )
+        } else {
+            null
+        }.also { cursor.close() }
+    }
+
     // Salva
     fun inserisciVisita(
         pazienteId: Int,

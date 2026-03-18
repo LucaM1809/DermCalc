@@ -35,10 +35,10 @@ class BsaActivity : AppCompatActivity() {
 
         db = DataBaseHelper(this)
 
-        pazienteId = intent.getIntExtra("paziente_id", -1)
-        visitaId = intent.getIntExtra("visita_id", -1)
-        nomePaziente = intent.getStringExtra("nome_paziente") ?: ""
-        dataVisita = intent.getStringExtra("data_visita") ?: ""
+        pazienteId = App.pazienteId
+        visitaId = App.visitaId
+        nomePaziente = App.nomePaziente
+        dataVisita = App.dataVisita
 
         Peso = findViewById(R.id.Peso)
         Altezza = findViewById(R.id.Altezza)
@@ -82,8 +82,6 @@ class BsaActivity : AppCompatActivity() {
             //apri pagina result
             val intent = Intent(this, activity_bsa_result::class.java)
             intent.putExtra("bsa", bsaRounded)
-            intent.putExtra("nome_paziente", nomePaziente)
-            intent.putExtra("data_visita", dataVisita)
             startActivity(intent)
 
         }

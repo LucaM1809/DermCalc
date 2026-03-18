@@ -15,7 +15,6 @@ import android.widget.TextView
 class activity_bmi_result : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_bmi_result)
 
         val bmi = intent.getDoubleExtra("bmi", 0.0)
@@ -23,8 +22,8 @@ class activity_bmi_result : AppCompatActivity() {
         val nomePaziente = intent.getStringExtra("nome_paziente") ?: ""
         val dataVisita = intent.getStringExtra("data_visita") ?: ""
 
-        findViewById<TextView>(R.id.tvNomePaziente).text = nomePaziente
-        findViewById<TextView>(R.id.tvDataVisita).text = dataVisita
+        findViewById<TextView>(R.id.tvNomePaziente).text = App.nomePaziente
+        findViewById<TextView>(R.id.tvDataVisita).text = App.dataVisita
 
         // colore in base al range
         val colore = when {
@@ -87,10 +86,5 @@ class activity_bmi_result : AppCompatActivity() {
             startActivity(intent)
         }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
 }

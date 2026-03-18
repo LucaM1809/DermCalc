@@ -12,6 +12,7 @@ class App: Application() {
         var dataNascita: String = ""
         var codiceFiscale: String = ""
         var dataVisita: String = ""
+        var sessioneAttiva: Boolean = false
 
         fun salva(context: Context) {
             val prefs = context.getSharedPreferences("dermcalc", Context.MODE_PRIVATE)
@@ -22,6 +23,7 @@ class App: Application() {
                 putString("dataNascita", dataNascita)
                 putString("codiceFiscale", codiceFiscale)
                 putString("dataVisita", dataVisita)
+                putBoolean("sessioneAttiva", sessioneAttiva)
                 apply()
             }
         }
@@ -34,6 +36,7 @@ class App: Application() {
             dataNascita = prefs.getString("dataNascita", "") ?: ""
             codiceFiscale = prefs.getString("codiceFiscale", "") ?: ""
             dataVisita = prefs.getString("dataVisita", "") ?: ""
+            sessioneAttiva = prefs.getBoolean("sessioneAttiva", false)
         }
     }
 

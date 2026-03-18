@@ -18,13 +18,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var DDN: EditText
     private lateinit var CodFis: EditText
     private lateinit var btnSalvaPaziente: Button
-    private lateinit var btnPasi: Button
-    private lateinit var btnEasi: Button
-    private lateinit var btnBmi: Button
-    private lateinit var btnBsa: Button
+    private lateinit var btnPasi: androidx.appcompat.widget.AppCompatButton
+    private lateinit var btnEasi: androidx.appcompat.widget.AppCompatButton
+    private lateinit var btnBmi: androidx.appcompat.widget.AppCompatButton
+    private lateinit var btnBsa: androidx.appcompat.widget.AppCompatButton
     private lateinit var btnReport: Button
     private lateinit var btnNavVisita: Button
     private lateinit var btnNavPazienti: Button
+    private lateinit var CodFisEsistente: EditText
+    private lateinit var btnCercaPaziente: Button
+    private lateinit var btnNuovaVisita: Button
 
     private lateinit var db: DataBaseHelper
     private var pazienteId: Int = -1
@@ -47,9 +50,55 @@ class MainActivity : AppCompatActivity() {
         btnReport = findViewById(R.id.btnReport)
         btnNavVisita = findViewById(R.id.btnNavVisita)
         btnNavPazienti = findViewById(R.id.btnNavPazienti)
+        CodFisEsistente = findViewById(R.id.CodFisEsistente)
+        btnCercaPaziente = findViewById(R.id.btnCercaPaziente)
+        btnNuovaVisita = findViewById(R.id.btnNuovaVisita)
 
-//        // i bottoni indici e report sono disabilitati finché non si salva il paziente
-//        abilitaBottoni(false)
+
+        btnNuovaVisita.setOnClickListener {
+            App.pazienteId = -1
+            App.visitaId = -1
+            App.nomePaziente = ""
+            App.dataNascita = ""
+            App.codiceFiscale = ""
+            App.dataVisita = ""
+            App.sessioneAttiva = false
+            App.salva(this)
+            Nome.setText("")
+            DDN.setText("")
+            CodFis.setText("")
+            CodFisEsistente.setText("")
+            abilitaBottoni(false)
+            Toast.makeText(this, "Nuova visita avviata", Toast.LENGTH_SHORT).show()
+        }
+
+        btnCercaPaziente.setOnClickListener {
+            val cf = CodFisEsistente.text.toString().trim()
+
+            if (cf.length != 16) {
+                Toast.makeText(this, "Codice fiscale non valido", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val paziente = db.getPazienteByCF(cf)
+            if (paziente != null) {
+                App.pazienteId = paziente.first
+                App.nomePaziente = paziente.second
+                App.dataNascita = paziente.third
+                App.codiceFiscale = cf
+                App.dataVisita = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+                App.visitaId = db.creaVisita(App.pazienteId, App.dataVisita).toInt()
+                App.sessioneAttiva = true
+                App.salva(this)
+                Nome.setText(App.nomePaziente)
+                DDN.setText(App.dataNascita)
+                CodFis.setText(App.codiceFiscale)
+                abilitaBottoni(true)
+                Toast.makeText(this, "Paziente trovato: ${App.nomePaziente}", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Paziente non trovato", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         // click sulla data — apre DatePickerDialog
         DDN.setOnClickListener {
@@ -83,6 +132,7 @@ class MainActivity : AppCompatActivity() {
                 App.codiceFiscale = codiceFiscale
                 App.dataVisita = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
                 App.visitaId = db.creaVisita(App.pazienteId, App.dataVisita).toInt()
+                App.sessioneAttiva = true
                 App.salva(this)
                 abilitaBottoni(true)
                 Toast.makeText(this, "Paziente salvato!", Toast.LENGTH_SHORT).show()
@@ -126,12 +176,15 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         App.carica(this)
-        if (App.pazienteId != -1) {
+        if (App.pazienteId != -1 && App.sessioneAttiva) {
             Nome.setText(App.nomePaziente)
             DDN.setText(App.dataNascita)
             CodFis.setText(App.codiceFiscale)
             abilitaBottoni(true)
         } else {
+            Nome.setText("")
+            DDN.setText("")
+            CodFis.setText("")
             abilitaBottoni(false)
         }
     }

@@ -36,10 +36,10 @@ class BmiActivity : AppCompatActivity() {
 
         db = DataBaseHelper(this)
 
-        pazienteId = intent.getIntExtra("paziente_id", -1)
-        visitaId = intent.getIntExtra("visita_id", -1)
-        nomePaziente = intent.getStringExtra("nome_paziente") ?: ""
-        dataVisita = intent.getStringExtra("data_visita") ?: ""
+        pazienteId = App.pazienteId
+        visitaId = App.visitaId
+        nomePaziente = App.nomePaziente
+        dataVisita = App.dataVisita
 
         Peso = findViewById(R.id.Peso)
         Altezza = findViewById(R.id.Altezza)
@@ -79,12 +79,12 @@ class BmiActivity : AppCompatActivity() {
             //range (uso di when con arrow operator)
             val classe = when {
                 bmi < 16.0 -> "Sottopeso Severo"
-                bmi < 16.0 -> "Sottopeso Moderato"
-                bmi < 16.0 -> "Sottopeso Lieve"
-                bmi < 16.0 -> "Normopeso"
-                bmi < 16.0 -> "Sovrappeso"
-                bmi < 16.0 -> "Obesità I"
-                bmi < 16.0 -> "Obesità II"
+                bmi < 17.0 -> "Sottopeso Moderato"
+                bmi < 18.5 -> "Sottopeso Lieve"
+                bmi < 25.0 -> "Normopeso"
+                bmi < 30.0 -> "Sovrappeso"
+                bmi < 35.0 -> "Obesità I"
+                bmi < 40.0 -> "Obesità II"
                 else -> "Obesità III"
             }
 
@@ -96,8 +96,6 @@ class BmiActivity : AppCompatActivity() {
             val intent = Intent(this, activity_bmi_result::class.java)
             intent.putExtra("bmi", bmiRounded)
             intent.putExtra("bmi_class", classe)
-            intent.putExtra("nome_paziente", nomePaziente)
-            intent.putExtra("data_visita", dataVisita)
             startActivity(intent)
 
         }
