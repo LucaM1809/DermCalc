@@ -34,7 +34,7 @@ class activity_bmi_result : AppCompatActivity() {
             bmi < 30.0 -> Color.parseColor("#F5C842")
             bmi < 35.0 -> Color.parseColor("#EF9F27")
             bmi < 40.0 -> Color.parseColor("#E05A2B")
-            else ->       Color.parseColor("#A32D2D")
+            else -> Color.parseColor("#A32D2D")
         }
 
         // risultato colorato
@@ -74,8 +74,10 @@ class activity_bmi_result : AppCompatActivity() {
 
         // link fonte
         findViewById<TextView>(R.id.tvFonte).setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW,
-                Uri.parse("https://leaderfarmablog.it/bmi-indice-di-massa-corporea/"))
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://leaderfarmablog.it/bmi-indice-di-massa-corporea/")
+            )
             startActivity(intent)
         }
 

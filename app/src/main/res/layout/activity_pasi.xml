@@ -50,165 +50,438 @@
 
     </LinearLayout>
 
-    <!-- zona centrale -->
-    <LinearLayout
+        <!-- zona dati -->
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:padding="24dp"
-        android:gravity="center_vertical"
+        android:padding = "16dp"
+        android:clipToPadding="false"
 
         app:layout_constraintTop_toBottomOf="@id/topBar"
         app:layout_constraintBottom_toTopOf="@id/btnCalcolaPasi"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- zona dati -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-
-            android:text="Distretto (H testa, U, Arti sup., T tronco, L Arti inf.)"
-            android:textColor="@color/text_secondary"
-            android:textSize="13sp"/>
-
-        <RadioGroup
-            android:id="@+id/rgDistretto"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
-
-            <RadioButton
-                android:id="@+id/rbTesta"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:layout_margin="4dp"
-                android:text="H"
-                android:gravity="center"
-                android:background="@drawable/bg_radio_selector"
-                android:textColor="@color/color_radio_selector"
-                app:buttonTint="@color/color_radio_selector"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:checked="true" />
-
-            <RadioButton
-                android:id="@+id/rbArtiSup"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:layout_margin="4dp"
-                android:text="U"
-                android:gravity="center"
-                android:background="@drawable/bg_radio_selector"
-                android:textColor="@color/color_radio_selector"
-                app:buttonTint="@color/color_radio_selector"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:checked="false" />
-
-            <RadioButton
-                android:id="@+id/rbTronco"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:layout_margin="4dp"
-                android:text="T"
-                android:gravity="center"
-                android:background="@drawable/bg_radio_selector"
-                android:textColor="@color/color_radio_selector"
-                app:buttonTint="@color/color_radio_selector"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:checked="false" />
-
-            <RadioButton
-                android:id="@+id/rbArtiInf"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:layout_margin="4dp"
-                android:text="L"
-                android:gravity="center"
-                android:background="@drawable/bg_radio_selector"
-                android:textColor="@color/color_radio_selector"
-                app:buttonTint="@color/color_radio_selector"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:checked="false" />
-
-        </RadioGroup>
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:orientation="vertical">
 
-            android:text="Peso (KG)"
-            android:textColor="@color/text_secondary"
-            android:textSize="13sp"/>
+            <!-- distretto -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
 
-        <EditText
-            android:id="@+id/Peso"
+                android:text="Distretto (H testa, U, Arti sup., T tronco, L Arti inf.)"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"/>
 
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="24dp"
-            android:padding="12dp"
-            android:background="@drawable/bg_input"
+            <RadioGroup
+                android:id="@+id/rgDistretto"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
 
-            android:hint="es. 70"
-            android:inputType="numberDecimal"
+                <RadioButton
+                    android:id="@+id/rbTesta"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="H"
+                    android:gravity="center"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:checked="true" />
 
-            android:textColor="@color/text_primary"
-            android:textColorHint="@color/text_secondary"
-            android:textSize="16sp"/>
+                <RadioButton
+                    android:id="@+id/rbArtiSup"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="U"
+                    android:gravity="center"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:checked="false" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+                <RadioButton
+                    android:id="@+id/rbTronco"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="T"
+                    android:gravity="center"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:checked="false" />
 
-            android:text="Altezza (CM)"
-            android:textColor="@color/text_secondary"
-            android:textSize="12sp"/>
+                <RadioButton
+                    android:id="@+id/rbArtiInf"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="L"
+                    android:gravity="center"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:checked="false" />
+            </RadioGroup>
+            
+            <!-- eritema -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                
+                android:text = "Eritema (E)"
+                android:textSize="15sp"/>
+            
+            <RadioGroup
+                android:id="@+id/rgEritema"
+                
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:id="@+id/Altezza"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/bg_input"
-            android:hint="es. 175"
-            android:inputType="numberDecimal"
-            android:padding="12dp"
+                <RadioButton
+                    android:id="@+id/rbE0"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="0"
+                    android:gravity="center"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:checked="true" />
 
-            android:textColor="@color/text_primary"
-            android:textColorHint="@color/text_secondary"
-            android:textSize="16sp"/>
-    </LinearLayout>
+                <RadioButton
+                    android:id="@+id/rbE1"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="1"
+                    android:gravity="center"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:checked="false" />
+
+                <RadioButton
+                    android:id="@+id/rbE2"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="2"
+                    android:gravity="center"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:checked="false" />
+
+                <RadioButton
+                    android:id="@+id/rbE3"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="3"
+                    android:gravity="center"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:checked="false" />
+
+                <RadioButton
+                    android:id="@+id/rbE4"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="4"
+                    android:gravity="center"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:checked="false" />
+
+                
+            </RadioGroup>
+
+            <!-- indurimento -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+
+                android:text = "Indurimento (I)"
+                android:textSize="15sp"/>
+
+            <RadioGroup
+                android:id="@+id/rgIndurimento"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbI0"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="0"
+                    android:gravity="center"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/rbI1"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="1"
+                    android:gravity="center"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:checked="false" />
+
+                <RadioButton
+                    android:id="@+id/rbI2"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="2"
+                    android:gravity="center"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:checked="false" />
+
+                <RadioButton
+                    android:id="@+id/rbI3"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="3"
+                    android:gravity="center"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:checked="false" />
+
+                <RadioButton
+                    android:id="@+id/rbI4"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="4"
+                    android:gravity="center"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:checked="false" />
+
+
+            </RadioGroup>
+
+            <!-- desquamazione -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+
+                android:text = "Desquamazione (D)"
+                android:textSize="15sp"/>
+
+            <RadioGroup
+                android:id="@+id/rgDesquamazione"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbD0"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="0"
+                    android:gravity="center"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/rbD1"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="1"
+                    android:gravity="center"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:checked="false" />
+
+                <RadioButton
+                    android:id="@+id/rbD2"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="2"
+                    android:gravity="center"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:checked="false" />
+
+                <RadioButton
+                    android:id="@+id/rbD3"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="3"
+                    android:gravity="center"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:checked="false" />
+
+                <RadioButton
+                    android:id="@+id/rbD4"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:text="4"
+                    android:gravity="center"
+                    app:buttonTint="@color/color_radio_selector"
+                    android:background="@drawable/bg_radio_selector"
+                    android:textColor="@color/color_radio_selector"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:checked="false" />
+
+
+            </RadioGroup>
+
+            <!-- area -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Area coinvolta (0-100%) (Senza %)"
+                android:textColor="@color/text_secondary"
+                android:textSize="15sp"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/Area"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_input"
+                android:hint="es. 35"
+                android:inputType="number"
+                android:padding="12dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnSalvaDistretto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/primary_blue"
+
+                android:text="Salva distretto"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </ScrollView>
+
 
     <!-- button calcola -->
     <Button
+        android:id="@+id/btnCalcolaPasi"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:id="@+id/btnCalcolaPasi"
-
         android:backgroundTint="@color/primary_blue"
 
-        android:text="Calcola BMI"
+        android:text="Salva e calcola PASI"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="15sp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
