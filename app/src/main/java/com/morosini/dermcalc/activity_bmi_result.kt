@@ -48,7 +48,7 @@ class activity_bmi_result : AppCompatActivity() {
             setTextColor(colore)
         }
 
-        // gradi severità — colora tutti e mette in bold quello attivo
+        // gradi severità colore
         val gradi = listOf(
             Triple(R.id.tvGrado1, Color.parseColor("#0D2B6B"), bmi < 16.0),
             Triple(R.id.tvGrado2, Color.parseColor("#1A52B0"), bmi in 16.0..16.99),
