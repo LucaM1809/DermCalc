@@ -77,7 +77,7 @@ class BsaActivity : AppCompatActivity() {
 
             //salvataggio del bmi arrotondato ai cents
             val bsaRounded = String.format("%.2f", bsa).toDouble()
-            db.aggiornaBmi(visitaId, bsaRounded)
+            db.aggiornaBsa(visitaId, bsaRounded)
 
             //apri pagina result
             val intent = Intent(this, activity_bsa_result::class.java)

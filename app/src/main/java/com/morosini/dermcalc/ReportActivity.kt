@@ -19,14 +19,33 @@ class ReportActivity : AppCompatActivity() {
 
         db = DataBaseHelper(this)
 
-        // generalità
-        findViewById<TextView>(R.id.tvDataVisitaReport).text = App.dataVisita
-        findViewById<TextView>(R.id.tvNomeReport).text = App.nomePaziente
-        findViewById<TextView>(R.id.tvCFReport).text = App.codiceFiscale
+        val fromDb = intent.getBooleanExtra("from_db", false)
 
-        // recupera i dati della visita dal DB
-        val visite = db.getVisitePaziente(App.pazienteId)
-        val visita = visite.firstOrNull { (it["id"] as Int) == App.visitaId }
+        val visita: Map<String, Any?>?
+        val nomePaziente: String
+        val codiceFiscale: String
+        val dataVisita: String
+
+        if (fromDb) {
+            val visitaId = intent.getIntExtra("visita_id", -1)
+            visita = db.getVisita(visitaId)
+            val pazienteId = visita["paziente_id"] as Int
+            val paziente = db.getPaziente(pazienteId)
+            nomePaziente = paziente?.second ?: ""
+            codiceFiscale = paziente?.third ?: ""
+            dataVisita = visita["data_visita"] as? String ?: ""
+            findViewById<Button>(R.id.btnSalvaReport).visibility = android.view.View.GONE
+        } else {
+            val visite = db.getVisitePaziente(App.pazienteId)
+            visita = visite.firstOrNull { (it["id"] as Int) == App.visitaId }
+            nomePaziente = App.nomePaziente
+            codiceFiscale = App.codiceFiscale
+            dataVisita = App.dataVisita
+        }
+
+        findViewById<TextView>(R.id.tvDataVisitaReport).text = dataVisita
+        findViewById<TextView>(R.id.tvNomeReport).text = nomePaziente
+        findViewById<TextView>(R.id.tvCFReport).text = codiceFiscale
 
         val pasi = visita?.get("pasi") as? Double
         val easi = visita?.get("easi") as? Double
@@ -39,7 +58,7 @@ class ReportActivity : AppCompatActivity() {
             val (classePasi, colorePasi) = when {
                 pasi <= 10.0 -> Pair("Lieve", Color.parseColor("#639922"))
                 pasi < 20.0 -> Pair("Moderata", Color.parseColor("#F5C842"))
-                else -> Pair("Severa", Color.parseColor("#A32D2D"))
+                else -> Pair("Grave", Color.parseColor("#A32D2D"))
             }
             tvPasi.text = "${String.format("%.2f", pasi)} — $classePasi"
             tvPasi.setTextColor(colorePasi)
@@ -52,10 +71,11 @@ class ReportActivity : AppCompatActivity() {
         val tvEasi = findViewById<TextView>(R.id.tvEasiReport)
         if (easi != null) {
             val (classeEasi, coloreEasi) = when {
-                easi < 1.0 -> Pair("Quasi assente", Color.parseColor("#1A52B0"))
-                easi < 7.0 -> Pair("Lieve", Color.parseColor("#4A90D9"))
-                easi < 21.0 -> Pair("Moderata", Color.parseColor("#639922"))
-                easi < 50.0 -> Pair("Grave", Color.parseColor("#F5C842"))
+                easi == 0.0 -> Pair("Assente", Color.parseColor("#1A52B0"))
+                easi <= 1.0 -> Pair("Quasi assente", Color.parseColor("#4A90D9"))
+                easi <= 7.0 -> Pair("Lieve", Color.parseColor("#639922"))
+                easi <= 21.0 -> Pair("Moderata", Color.parseColor("#F5C842"))
+                easi <= 50.0 -> Pair("Grave", Color.parseColor("#EF9F27"))
                 else -> Pair("Molto grave", Color.parseColor("#A32D2D"))
             }
             tvEasi.text = "${String.format("%.2f", easi)} — $classeEasi"
@@ -88,13 +108,9 @@ class ReportActivity : AppCompatActivity() {
         // BSA
         val tvBsa = findViewById<TextView>(R.id.tvBsaReport)
         if (bsa != null) {
-            val (classeBsa, coloreBsa) = when {
-                bsa < 3.0 -> Pair("Lieve", Color.parseColor("#639922"))
-                bsa < 10.0 -> Pair("Moderata", Color.parseColor("#F5C842"))
-                else -> Pair("Grave", Color.parseColor("#A32D2D"))
-            }
-            tvBsa.text = "${String.format("%.2f", bsa)} — $classeBsa"
-            tvBsa.setTextColor(coloreBsa)
+            val colorBsa = Color.parseColor("#D4537E")
+            tvBsa.text = "${String.format("%.2f", bsa)}"
+            tvBsa.setTextColor(colorBsa)
         } else {
             tvBsa.text = "Non calcolato"
             tvBsa.setTextColor(Color.parseColor("#888888"))

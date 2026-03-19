@@ -157,4 +157,38 @@ class DataBaseHelper(context: Context): SQLiteOpenHelper(context, "dermcalc.db",
         cursor.close()
         return lista
     }
+    fun getVisita(visitaId: Int): Map<String, Any?> {
+        val db = readableDatabase
+        val cursor = db.rawQuery(
+            "SELECT * FROM Visite WHERE id = ?",
+            arrayOf(visitaId.toString())
+        )
+        cursor.moveToFirst()
+        val result = mapOf(
+            "id" to cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+            "paziente_id" to cursor.getInt(cursor.getColumnIndexOrThrow("paziente_id")),
+            "data_visita" to cursor.getString(cursor.getColumnIndexOrThrow("data_visita")),
+            "pasi" to if (cursor.isNull(cursor.getColumnIndexOrThrow("pasi"))) null else cursor.getDouble(cursor.getColumnIndexOrThrow("pasi")),
+            "easi" to if (cursor.isNull(cursor.getColumnIndexOrThrow("easi"))) null else cursor.getDouble(cursor.getColumnIndexOrThrow("easi")),
+            "bmi" to if (cursor.isNull(cursor.getColumnIndexOrThrow("bmi"))) null else cursor.getDouble(cursor.getColumnIndexOrThrow("bmi")),
+            "bsa" to if (cursor.isNull(cursor.getColumnIndexOrThrow("bsa"))) null else cursor.getDouble(cursor.getColumnIndexOrThrow("bsa"))
+        )
+        cursor.close()
+        return result
+    }
+
+    fun getPaziente(pazienteId: Int): Triple<Int, String, String>? {
+        val db = readableDatabase
+        val cursor = db.rawQuery(
+            "SELECT id, nome, codice_fiscale FROM Pazienti WHERE id = ?",
+            arrayOf(pazienteId.toString())
+        )
+        return if (cursor.moveToFirst()) {
+            Triple(
+                cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2)
+            )
+        } else null.also { cursor.close() }
+    }
 }
