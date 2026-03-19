@@ -464,6 +464,15 @@
 
                 android:text="Salva distretto"
                 android:textColor="@color/white" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="NON SALVARE IL DISTRETTO SE\n- È l'ultimo distretto considerato nel calcolo\n- È l'unico distretto considerato nel calcolo\nIn questi casi salvare e calcolare direttamente"
+                android:textColor="@color/primary_blue"
+                android:textSize="18sp"/>
         </LinearLayout>
 
     </ScrollView>
