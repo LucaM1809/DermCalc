@@ -7,4 +7,128 @@
     android:layout_height="match_parent"
     tools:context=".ReportActivity">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/topBar"
+        android:background="@color/primary_blue"
+        android:orientation="vertical"
+        android:padding="16dp"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Report Visita"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvDataVisitaReport"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textColor="@color/white"
+        android:textSize="15sp"/>
+
+    </LinearLayout>
+
+    <!-- zona visualizzazione report -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        android:clipToPadding="false"
+
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width=""
+            android:layout_height="">
+
+            <!-- zona generalità paziente -->
+            <LinearLayout
+                android:layout_width=""
+                android:layout_height="">
+
+                <TextView
+                    android:layout_width=""
+                    android:layout_height=""/>
+
+                <LinearLayout
+                    android:layout_width=""
+                    android:layout_height="">
+
+
+                    <TextView
+                        android:layout_width=""
+                        android:layout_height=""/>
+
+                    <TextView
+                        android:layout_width=""
+                        android:layout_height=""/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width=""
+                    android:layout_height="">
+
+
+                    <TextView
+                        android:layout_width=""
+                        android:layout_height=""/>
+
+                    <TextView
+                        android:layout_width=""
+                        android:layout_height=""/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- zona indici -->
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- bottom bar con pulsanti -->
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnTornaVisita"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/primary_blue"
+            android:text="Torna alla visita"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnSalvaReport"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/primary_blue"
+            android:text="Salva report"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

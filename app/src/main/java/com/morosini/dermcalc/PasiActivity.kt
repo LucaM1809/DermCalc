@@ -61,7 +61,7 @@ class PasiActivity : AppCompatActivity() {
             val classe = when{
                 pasi <= 10.0 -> "lieve"
                 pasi < 20.0 -> "moderata"
-                else -> "severa"
+                else -> "grave"
             }
 
             val pasiRounded = String.format("%.2f", pasi).toDouble()
