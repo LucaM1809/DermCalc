@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -11,11 +12,17 @@ import androidx.appcompat.app.AppCompatActivity
 class PatientActivity : AppCompatActivity() {
 
     private lateinit var db: DataBaseHelper
+    private lateinit var btnNavVisita: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient)
         db = DataBaseHelper(this)
+        btnNavVisita = findViewById(R.id.btnNavVisita)
+        btnNavVisita.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {
@@ -80,5 +87,6 @@ class PatientActivity : AppCompatActivity() {
 
             container.addView(row)
         }
+
     }
 }

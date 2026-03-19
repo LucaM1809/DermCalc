@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="DermCalc"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text="Nuova Visita"
             android:textColor="@color/light_blue"
-            android:textSize="13sp" />
+            android:textSize="15sp" />
 
 
     </LinearLayout>
@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:text="Paziente già visitato"
                     android:textColor="@color/text_secondary"
-                    android:textSize="11sp"
+                    android:textSize="15sp"
                     android:layout_marginBottom="12dp" />
 
                 <EditText
@@ -85,7 +85,7 @@
                     android:padding="12dp"
                     android:textColor="@color/text_primary"
                     android:textColorHint="@color/text_secondary"
-                    android:textSize="14sp" />
+                    android:textSize="15sp" />
 
                 <Button
                     android:id="@+id/btnCercaPaziente"
@@ -94,7 +94,8 @@
                     android:layout_marginTop="8dp"
                     android:backgroundTint="@color/primary_blue"
                     android:text="Cerca paziente"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="17sp"/>
 
             </LinearLayout>
             <Button
@@ -104,7 +105,8 @@
                 android:layout_marginBottom="12dp"
                 android:backgroundTint="@color/primary_blue"
                 android:text="Nuova visita"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="17sp"/>
             <!-- generalità paziente -->
             <LinearLayout
                 android:id="@+id/cardPaziente"
@@ -169,7 +171,8 @@
                 android:backgroundTint="@color/primary_blue"
                 android:padding="14dp"
                 android:text="Salva e inizia visita"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="17sp"/>
 
             <!-- button calcolo indici -->
             <GridLayout
@@ -248,7 +251,8 @@
                 android:backgroundTint="@color/primary_blue"
                 android:padding="14dp"
                 android:text="Genera Report Completo"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="17sp"/>
 
         </LinearLayout>
 

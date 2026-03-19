@@ -52,4 +52,35 @@
 
     </ScrollView>
 
+    <!-- navbar sotto -->
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/primary_blue"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnNavVisita"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Visita"
+            android:textColor="@color/white"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/btnNavPazienti"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="DB Pazienti"
+            android:textColor="@color/white"
+            android:background="@android:color/transparent" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
