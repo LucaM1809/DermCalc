@@ -108,9 +108,13 @@ class ReportActivity : AppCompatActivity() {
         // BSA
         val tvBsa = findViewById<TextView>(R.id.tvBsaReport)
         if (bsa != null) {
-            val colorBsa = Color.parseColor("#D4537E")
-            tvBsa.text = "${String.format("%.2f", bsa)}"
-            tvBsa.setTextColor(colorBsa)
+            val (classeBsa, coloreBsa) = when {
+                bsa <= 10.0 -> Pair("Lieve", Color.parseColor("#639922"))
+                bsa <= 20.0 -> Pair("Moderata", Color.parseColor("#F5C842"))
+                else -> Pair("Grave", Color.parseColor("#A32D2D"))
+            }
+            tvBsa.text = "${String.format("%.2f", bsa)}% — $classeBsa"
+            tvBsa.setTextColor(coloreBsa)
         } else {
             tvBsa.text = "Non calcolato"
             tvBsa.setTextColor(Color.parseColor("#888888"))

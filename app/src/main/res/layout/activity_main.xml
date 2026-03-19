@@ -170,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/primary_blue"
                 android:padding="14dp"
-                android:text="Salva e inizia visita"
+                android:text="Salva Nuovo"
                 android:textColor="@color/white"
                 android:textSize="17sp"/>
 

@@ -36,7 +36,7 @@
 
             android:text="Nome Paziente"
             android:textColor="@color/white"
-            android:textSize="13sp"/>
+            android:textSize="15sp"/>
 
         <TextView
             android:id="@+id/tvDataVisita"
@@ -84,12 +84,25 @@
                     android:textStyle="bold"
                     android:textColor="@color/primary_bsa"/>
 
+                <TextView
+                    android:id="@+id/tvSuperficieBsa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    android:id="@+id/tvClasseBsa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_bsa"/>
 
             </LinearLayout>
 
-
-
-            <!-- FONTE -->
+            <!-- gradi di severità -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -101,20 +114,85 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fonte"
+                    android:text="Gradi di severità"
                     android:textColor="@color/text_secondary"
                     android:textSize="11sp"
-                    android:layout_marginBottom="6dp" />
+                    android:layout_marginBottom="10dp" />
 
                 <TextView
-                    android:id="@+id/tvFonte"
+                    android:id="@+id/tvGrado1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lieve — BSA &lt;= 10%"
+                    android:textSize="15sp"
+                    android:padding="8dp"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/tvGrado2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Moderata — 10% &lt; BSA &lt;= 20%"
+                    android:textSize="15sp"
+                    android:padding="8dp"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/tvGrado3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Grave — BSA &gt; 20%"
+                    android:textSize="15sp"
+                    android:padding="8dp" />
+
+            </LinearLayout>
+
+            <!-- FONTI -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:text="calcolatrice.now - Calcolatore dell'Area Superficiale Corporea"
+                    android:layout_height="wrap_content"
+                    android:text="Fonti"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvFonte1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Calcolatrice.now - Calcolatore BSA"
                     android:textColor="@color/primary_bsa"
-                    android:textSize="13sp"
+                    android:textSize="15sp"
                     android:clickable="true"
-                    android:focusable="true" />
+                    android:focusable="true"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvFonte2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Il dermatologo risponde - Superficie cutanea BSA"
+                    android:textColor="@color/primary_bsa"
+                    android:textSize="15sp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvFonte3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Consulto con medico di medicina generale\nDott.sa Andricciola Chiara"
+                    android:textColor="@color/primary_bsa"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 

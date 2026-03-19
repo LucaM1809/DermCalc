@@ -181,11 +181,13 @@ class MainActivity : AppCompatActivity() {
             DDN.setText(App.dataNascita)
             CodFis.setText(App.codiceFiscale)
             abilitaBottoni(true)
+            btnSalvaPaziente.isEnabled = false
         } else {
             Nome.setText("")
             DDN.setText("")
             CodFis.setText("")
             abilitaBottoni(false)
+            btnSalvaPaziente.isEnabled = true
         }
     }
 
