@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnCercaPaziente.setOnClickListener {
-            val cf = CodFisEsistente.text.toString().trim()
+            val cf = CodFisEsistente.text.toString().trim().uppercase()
 
             if (cf.length != 16) {
                 Toast.makeText(this, "Codice fiscale non valido", Toast.LENGTH_SHORT).show()
@@ -112,7 +112,7 @@ class MainActivity : AppCompatActivity() {
         btnSalvaPaziente.setOnClickListener {
             val nome = Nome.text.toString().trim()
             val dataNascita = DDN.text.toString().trim()
-            val codiceFiscale = CodFis.text.toString().trim()
+            val codiceFiscale = CodFis.text.toString().trim().uppercase()
 
             if (nome.isEmpty() || dataNascita.isEmpty() || codiceFiscale.isEmpty()) {
                 Toast.makeText(this, "Compila tutti i campi", Toast.LENGTH_SHORT).show()

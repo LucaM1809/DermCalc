@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2026-03-16T21:41:07.252804600Z">
+        <DropdownSelection timestamp="2026-03-19T15:53:27.429416300Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\admin\.android\avd\provamedio2.avd" />
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=b64bb0e12ff3" />
             </handle>
           </Target>
         </DropdownSelection>

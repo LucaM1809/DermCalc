@@ -191,4 +191,10 @@ class DataBaseHelper(context: Context): SQLiteOpenHelper(context, "dermcalc.db",
             )
         } else null.also { cursor.close() }
     }
+
+    fun eliminaPaziente(pazienteId: Int) {
+        val db = writableDatabase
+        db.delete("Visite", "paziente_id = ?", arrayOf(pazienteId.toString()))
+        db.delete("Pazienti", "id = ?", arrayOf(pazienteId.toString()))
+    }
 }
