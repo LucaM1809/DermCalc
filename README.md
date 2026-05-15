@@ -1,10 +1,10 @@
-#DermCalc
+# DermCalc
 Applicazione Android per il calcolo di indici dermatologici
 
-##Descrizione
+## Descrizione
 Il progetto simula lo sviluppo di un'applicazione medica
 
-##Indici calcolati
+## Indici calcolati
 **PASI** - Psoriasis Area and Severity Index
 
 **EASI** - Eczema Area and Severity Index
