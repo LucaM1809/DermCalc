@@ -138,7 +138,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Palmi di cute interessati"
+                    android:text="Palmi di mano del paziente sulle zone interessate"
                     android:textColor="@color/text_secondary"
                     android:textSize="13sp"
                     android:layout_marginBottom="12dp" />
