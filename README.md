@@ -27,3 +27,21 @@ Il progetto simula lo sviluppo di un'applicazione medica
 Pazienti (id, nome, data_nascita, codice_fiscale)
 Visite (id, paziente_id, data_visita, pasi, easi, bmi, bsa)
 ```
+
+## Funzionalità
+
+- Inserimento nuovo paziente con nome, data di nascita e codice fiscale
+- Ricerca paziente esistente tramite codice fiscale
+- Calcolo dei 4 indici con salvataggio automatico nel database
+- Generazione report completo per visita con colori per grado di severità
+- Storico visite per paziente
+- Eliminazione paziente con cancellata a cascata delle visite associate
+
+## Palette colori
+
+| Indice | Colore |
+|--------|--------|
+| PASI | `#1C3A5E` |
+| EASI | `#639922` |
+| BMI | `#EF9F27` |
+| BSA | `#D4537E` |
